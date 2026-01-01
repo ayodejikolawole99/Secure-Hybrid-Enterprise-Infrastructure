@@ -1,4 +1,4 @@
-**ARCHITECTURE OVERVIEW**
+# **ARCHITECTURE OVERVIEW**
 
 _This project implements a secure, scalable enterprise network architecture based on a hierarchical core-distribution-access model, with explicit segmentations for users, admins, servers, guests, and public-facing services._
 
@@ -11,7 +11,7 @@ The design prioritizes:
 This architecture was first modeled in Cisco Packet Tracer to validate Layer 2 and Layer 3 behavior, then designed to be portable to cloud infrastructure (Azure) in later phases.
 
 
-**High-Level Design**
+# **High-Level Design**
 
 At a high level, the network follows this flow:
 
@@ -21,7 +21,7 @@ A dedicated DMZ is terminated directly on the firewall to isolate public-facing 
 
 
 
-**Network Layers and Roles**
+# **Network Layers and Roles**
 
 **1. Internet Edge**
    
