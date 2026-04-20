@@ -1,1 +1,48 @@
+#   🔐 Identity & Access Management (IAM) Architecture
 
+#   Overview
+
+The IAM architecture for Aurum Manufacturing Group (AMG) is designed to provide centralized identity management, secure authentication, and controlled authorization across all cloud and internal resources.
+
+This implementation combines:
+
+* Active Directory Domain Services (AD DS) for internal identity
+
+* Azure-native controls for access governance
+
+* Role-based and network-based access enforcement
+
+
+
+#   🧱 Identity Architecture Components
+
+1. Active Directory Domain Services (AD DS)
+
+* Hosted on: amg-dc01 (Windows Server VM)
+
+* Domain: aurum.local
+
+* Role:
+
+    * Central identity provider for internal resources
+
+    * Authentication for domain-joined machines
+
+    * Group-based access control
+
+Key Functions:
+
+* User authentication (Kerberos / NTLM)
+
+* Organizational Unit (OU) structure for policy control
+
+* Group Policy enforcement
+
+* DNS services for internal name resolution
+
+⸻
+
+2. Organizational Unit (OU) Structure
+
+The AD environment is logically segmented to reflect business roles and enforce administrative boundaries.
+ 
