@@ -1,8 +1,8 @@
-🚀# Enterprise Network Architecture on Azure (Terraform-Based)
+#   Enterprise Network Architecture on Azure (Terraform-Based)
 
 I designed and deployed a secure, segmented enterprise infrastructure for a fictional organization, Aurum Manufacturing Group, using Terraform and Microsoft Azure.
 
-🔧# Key Highlights:
+#   Key Highlights:
 
 * Designed a hub-and-spoke style virtual network
 
@@ -17,6 +17,8 @@ I designed and deployed a secure, segmented enterprise infrastructure for a fict
 * Deployed:
 
     * Windows Server (AD DS)
+
+    * Windows based Guest computer
 
     * Linux-based web server (Flask application)
 
@@ -38,9 +40,8 @@ I designed and deployed a secure, segmented enterprise infrastructure for a fict
 
 * Entire infrastructure provisioned via Terraform (Infrastructure as Code)
 
-⸻
 
-🧠 Architecture Focus Areas:
+#   Architecture Focus Areas:
 
 * Zero Trust access model
 
@@ -50,9 +51,9 @@ I designed and deployed a secure, segmented enterprise infrastructure for a fict
 
 * Secure DMZ implementation for web services
 
-⸻
 
-📈 Outcome:
+
+#   Outcome:
 
 This project simulates a real-world enterprise environment and demonstrates:
 
