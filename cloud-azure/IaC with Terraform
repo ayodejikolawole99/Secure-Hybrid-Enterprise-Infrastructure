@@ -1,0 +1,64 @@
+🚀# Enterprise Network Architecture on Azure (Terraform-Based)
+
+I designed and deployed a secure, segmented enterprise infrastructure for a fictional organization, Aurum Manufacturing Group, using Terraform and Microsoft Azure.
+
+🔧# Key Highlights:
+
+* Designed a hub-and-spoke style virtual network
+
+* Implemented network segmentation:
+
+    * DMZ (public-facing web server)
+
+    * Internal network (Active Directory Domain Controller)
+
+    * Guest network (isolated environment)
+
+* Deployed:
+
+    * Windows Server (AD DS)
+
+    * Linux-based web server (Flask application)
+
+    * Bastion host for secure remote access
+
+* Secured environment using:
+
+    * Azure Firewall + Firewall Policies
+
+    * Route tables for traffic control
+
+    * Network isolation principles
+
+* Eliminated direct public exposure using:
+
+    * Azure Bastion (no public RDP/SSH)
+
+* Integrated centralized logging and monitoring using Log Analytics
+
+* Entire infrastructure provisioned via Terraform (Infrastructure as Code)
+
+⸻
+
+🧠 Architecture Focus Areas:
+
+* Zero Trust access model
+
+* Least privilege network design
+
+* Segmentation between user, admin, and guest environments
+
+* Secure DMZ implementation for web services
+
+⸻
+
+📈 Outcome:
+
+This project simulates a real-world enterprise environment and demonstrates:
+
+* Cloud networking design
+
+* Security architecture principles
+
+* Infrastructure automation using Terraform
+ 
