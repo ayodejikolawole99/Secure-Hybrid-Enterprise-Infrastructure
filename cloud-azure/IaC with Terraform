@@ -1,65 +1,52 @@
-#   Enterprise Network Architecture on Azure (Terraform-Based)
+#   🚀 Building Secure Enterprise Network Architecture on Azure with Terraform
 
-I designed and deployed a secure, segmented enterprise infrastructure for a fictional organization, Aurum Manufacturing Group, using Terraform and Microsoft Azure.
+Over the past week, I designed and deployed a segmented enterprise infrastructure for Aurum Manufacturing Group using Terraform and Microsoft Azure. This project was more than just provisioning resources, it was about applying real-world security architecture principles in the cloud.
 
-#   Key Highlights:
+#   🔑 Key Achievements
 
-* Designed a hub-and-spoke style virtual network
+-   Hub-and-Spoke Virtual Network Design: Centralized control with clear segmentation for users, admins, guests, and DMZ workloads.
 
-* Implemented network segmentation:
+#   Network Segmentation & Zero Trust:
 
-    * DMZ (public-facing web server)
+- DMZ for public-facing services (Linux web server running Flask).
 
-    * Internal network (Active Directory Domain Controller)
+    - Internal subnet hosting Active Directory Domain Services (Windows Server).
 
-    * Guest network (isolated environment)
+    - Guest subnet isolated from core infrastructure.
 
-* Deployed:
+- Secure Remote Access: Implemented Azure Bastion to eliminate direct public RDP/SSH exposure.
 
-    * Windows Server (AD DS)
+- Traffic Control & Inspection:
 
-    * Windows based Guest computer
+    - Azure Firewall with custom rule collections.
 
-    * Linux-based web server (Flask application)
+    - Route tables directing all outbound traffic through the firewall.
 
-    * Bastion host for secure remote access
+- Centralized Monitoring: Integrated Log Analytics Workspace for diagnostics, firewall logs, and visibility into network activity.
 
-* Secured environment using:
-
-    * Azure Firewall + Firewall Policies
-
-    * Route tables for traffic control
-
-    * Network isolation principles
-
-* Eliminated direct public exposure using:
-
-    * Azure Bastion (no public RDP/SSH)
-
-* Integrated centralized logging and monitoring using Log Analytics
-
-* Entire infrastructure provisioned via Terraform (Infrastructure as Code)
+- Infrastructure as Code: Entire environment provisioned and managed via Terraform, ensuring repeatability and automation.
 
 
-#   Architecture Focus Areas:
+#   🛡️ Security Focus
 
-* Zero Trust access model
+- Adopted a Zero Trust model — every subnet and workload is isolated and explicitly allowed only what it needs.
 
-* Least privilege network design
+- Applied least privilege principles to network flows.
 
-* Segmentation between user, admin, and guest environments
+- Built a secure DMZ that inspects and controls traffic before it reaches internal systems.
 
-* Secure DMZ implementation for web services
+#   🌍 Why This Matters
 
+This project simulates a real-world enterprise environment where cloud networking, security, and automation converge. It demonstrates how organizations can:
 
+    - Modernize infrastructure with Terraform automation.
 
-#   Outcome:
+    - Strengthen defenses with Azure-native security controls.
 
-This project simulates a real-world enterprise environment and demonstrates:
+    - Achieve visibility and compliance through centralized logging.
 
-* Cloud networking design
+#   Outcome
 
-* Security architecture principles
+A resilient, secure, and automated enterprise network — a blueprint for organizations looking to embrace cloud infrastructure while maintaining strong security posture.
 
-* Infrastructure automation using Terraform
- 
+💡 
