@@ -15,7 +15,7 @@ A zero trust, compliance driven hybrid enterprise network project. This project 
 
 Using a fictional company to anchor everything.
 
-**Company:** Nexus Manufacturing Group (NMG)
+**Company:** Aurum Manufacturing Group (AMG)
 
 **Industry:** Manufacturing and Logistics
 
