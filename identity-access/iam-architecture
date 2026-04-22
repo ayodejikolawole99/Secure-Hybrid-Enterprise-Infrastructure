@@ -1,48 +1,64 @@
-#   🔐 Identity & Access Management (IAM) Architecture
+𝗛𝘆𝗯𝗿𝗶𝗱 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗶𝗻 𝗘𝗻𝘁𝗲𝗿𝗽𝗿𝗶𝘀𝗲 𝗜𝗻𝗳𝗿𝗮𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲 (𝗔𝘂𝗿𝘂𝗺 𝗠𝗮𝗻𝘂𝗳𝗮𝗰𝘁𝘂𝗿𝗶𝗻𝗴 𝗚𝗿𝗼𝘂𝗽)
 
-#   Overview
+As part of my ongoing enterprise infrastructure project for 𝘈𝘶𝘳𝘶𝘮 𝘔𝘢𝘯𝘶𝘧𝘢𝘤𝘵𝘶𝘳𝘪𝘯𝘨 𝘎𝘳𝘰𝘶𝘱 (𝘈𝘔𝘎), I extended the environment beyond networking and compute into hybrid identity architecture.
 
-The IAM architecture for Aurum Manufacturing Group (AMG) is designed to provide centralized identity management, secure authentication, and controlled authorization across all cloud and internal resources.
+The objective was to simulate how organizations bridge on‑prem identity systems with cloud identity platforms.
 
-This implementation combines:
+🧱 𝗪𝗵𝗮𝘁 𝗜 𝗜𝗺𝗽𝗹𝗲𝗺𝗲𝗻𝘁𝗲𝗱
+Deployed and configured Active Directory Domain Services on a Windows Server VM in Azure to act as the central identity provider for internal resources.
 
-* Active Directory Domain Services (AD DS) for internal identity
+Integrated it with Microsoft Entra ID using Azure AD Connect.
 
-* Azure-native controls for access governance
+🔗 𝗛𝘆𝗯𝗿𝗶𝗱 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗗𝗲𝘀𝗶𝗴𝗻
+This setup enables:
+- Synchronization of on‑prem AD users to Entra ID
+- Consistent identity across domain‑joined machines and cloud resources
+- A single identity lifecycle across environments
 
-* Role-based and network-based access enforcement
+𝗔𝘂𝘁𝗵𝗲𝗻𝘁𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗳𝗹𝗼𝘄 𝗻𝗼𝘄 𝗹𝗼𝗼𝗸𝘀 𝗹𝗶𝗸𝗲:
+User → Active Directory (authentication) → Synced to Entra ID → Access to cloud + internal resources
 
+🏢 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗦𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲
+Built a structured AD environment aligned with enterprise roles and network segmentation:
 
+𝘈𝘋 𝘈𝘥𝘮𝘪𝘯 𝘈𝘤𝘤𝘰𝘶𝘯𝘵𝘴 𝘖𝘜
+    - Groups
+    - Service Accounts
+    - Users (with a Retired Users sub‑OU)
 
-#   🧱 Identity Architecture Components
+𝘋𝘢𝘵𝘢 𝘖𝘜
+    - Servers
+    - Sites (15 global locations, each with sub‑OUs for Computers, Users, Servers, Service Accounts)
+    - Decommissioned Servers OU
+    - Domain Controllers OU
 
-1. Active Directory Domain Services (AD DS)
+This structure aligns identity with:
+- VLAN/subnet segmentation
+- Security zones (Admin, User, Guest, DMZ)
 
-* Hosted on: amg-dc01 (Windows Server VM)
+🔐 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗖𝗼𝗻𝘁𝗿𝗼𝗹𝘀 𝗜𝗺𝗽𝗹𝗲𝗺𝗲𝗻𝘁𝗲𝗱
+𝘋𝘰𝘮𝘢𝘪𝘯‐𝘭𝘦𝘷𝘦𝘭 𝘎𝘳𝘰𝘶𝘱 𝘗𝘰𝘭𝘪𝘤𝘺:
+    - Account lockout policy (brute‑force protection)
+    - Separation of admin vs user accounts
+    - No domain trust for DMZ or guest environments
 
-* Domain: aurum.local
+📊 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗘𝘃𝗲𝗻𝘁𝘀
+Forwarded identity‑related logs to a Log Analytics Workspace and integrated with Microsoft Sentinel for visibility.
+Examples of monitored events:
+    - Failed logins
+    - Account lockouts
+    - Privileged account usage
 
-* Role:
+🧠 𝗪𝗵𝘆 𝗧𝗵𝗶𝘀 𝗠𝗮𝘁𝘁𝗲𝗿𝘀
+In most enterprise environments, identity is the true control plane.
 
-    * Central identity provider for internal resources
+This setup demonstrates:
 
-    * Authentication for domain-joined machines
+- Centralized authentication
+- Hybrid identity integration
+- Alignment between identity, network, and security layers
 
-    * Group-based access control
-
-Key Functions:
-
-* User authentication (Kerberos / NTLM)
-
-* Organizational Unit (OU) structure for policy control
-
-* Group Policy enforcement
-
-* DNS services for internal name resolution
-
-⸻
-
-2. Organizational Unit (OU) Structure
-
-The AD environment is logically segmented to reflect business roles and enforce administrative boundaries.
- 
+📈 𝗡𝗲𝘅𝘁 𝗦𝘁𝗲𝗽𝘀
+- Conditional Access + MFA enforcement
+- Privileged Identity Management (PIM)
+- Identity‑based threat detection and response
