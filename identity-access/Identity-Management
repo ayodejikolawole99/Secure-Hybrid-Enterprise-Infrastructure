@@ -46,15 +46,15 @@ $𝘭𝘰𝘤𝘢𝘵𝘪𝘰𝘯𝘴 = @("𝘕𝘰𝘳𝘵𝘩 𝘈𝘮𝘦𝘳
 
 🔒 𝟮. 𝗣𝗮𝘀𝘀𝘄𝗼𝗿𝗱 & 𝗟𝗼𝗰𝗸𝗼𝘂𝘁 𝗣𝗼𝗹𝗶𝗰𝗶𝗲𝘀
 
-𝘊𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘦𝘥 𝘷𝘪𝘢 𝘎𝘳𝘰𝘶𝘱 𝘗𝘰𝘭𝘪𝘤𝘺 𝘢𝘵 𝘵𝘩𝘦 𝘥𝘰𝘮𝘢𝘪𝘯 𝘭𝘦𝘷𝘦𝘭:
-- Minimum length: 8–12 characters
+𝘊𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘦𝘥 𝘷𝘪𝘢 𝘎𝘳𝘰𝘶𝘱 𝘗𝘰𝘭𝘪𝘤𝘺 𝘔𝘢𝘯𝘢𝘨𝘦𝘮𝘦𝘯𝘵 𝘢𝘵 𝘵𝘩𝘦 𝘥𝘰𝘮𝘢𝘪𝘯 𝘭𝘦𝘷𝘦𝘭:
+- Minimum length: 14 characters
 - Complexity: enabled
 - Maximum age: 90 days
-- History: 5–10 remembered
+- History: 5 remembered
 
 𝘈𝘤𝘤𝘰𝘶𝘯𝘵 𝘓𝘰𝘤𝘬𝘰𝘶𝘵 𝘗𝘰𝘭𝘪𝘤𝘺:
 
-- Threshold: 5 failed attempts
+- Threshold: 3 failed attempts
 - Duration: 15 minutes
 - Reset counter: 15 minutes
 
