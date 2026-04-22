@@ -53,12 +53,7 @@ Examples of monitored events:
 In most enterprise environments, identity is the true control plane.
 
 This setup demonstrates:
-
 - Centralized authentication
 - Hybrid identity integration
 - Alignment between identity, network, and security layers
 
-📈 𝗡𝗲𝘅𝘁 𝗦𝘁𝗲𝗽𝘀
-- Conditional Access + MFA enforcement
-- Privileged Identity Management (PIM)
-- Identity‑based threat detection and response
