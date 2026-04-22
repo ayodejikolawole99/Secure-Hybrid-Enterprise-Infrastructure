@@ -15,6 +15,7 @@ OU Structure Implemented:
 𝘋𝘢𝘵𝘢 𝘖𝘜
     - Servers
     - Sites → 15 global locations (North America, South America, Europe, Africa, Asia, Australia, Middle East, East Asia, South Asia,Central America, Northern Europe, Southern Europe, Eastern Europe, Western Europe, Pacific Islands)
+
         - 𝘌𝘢𝘤𝘩 𝘴𝘪𝘵𝘦 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘴𝘶𝘣‐𝘖𝘜𝘴 𝘧𝘰𝘳 𝘊𝘰𝘮𝘱𝘶𝘵𝘦𝘳𝘴, 𝘜𝘴𝘦𝘳𝘴, 𝘚𝘦𝘳𝘷𝘦𝘳𝘴, 𝘚𝘦𝘳𝘷𝘪𝘤𝘦 𝘈𝘤𝘤𝘰𝘶𝘯𝘵𝘴
 
 - Decommissioned Servers OU
@@ -53,17 +54,18 @@ $𝘭𝘰𝘤𝘢𝘵𝘪𝘰𝘯𝘴 = @("𝘕𝘰𝘳𝘵𝘩 𝘈𝘮𝘦𝘳
 - History: 5 remembered
 
 𝘈𝘤𝘤𝘰𝘶𝘯𝘵 𝘓𝘰𝘤𝘬𝘰𝘶𝘵 𝘗𝘰𝘭𝘪𝘤𝘺:
-
 - Threshold: 3 failed attempts
 - Duration: 15 minutes
 - Reset counter: 15 minutes
+
+𝘈𝘭𝘭 𝘳𝘦𝘮𝘰𝘷𝘦𝘢𝘣𝘭𝘦 𝘴𝘵𝘰𝘳𝘢𝘨𝘦 𝘤𝘭𝘢𝘴𝘴𝘦𝘴:
+- Enabled
 
 🛡️𝟯. 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗖𝗼𝗻𝘁𝗿𝗼𝗹𝘀
 
 - Strong password requirements enforced
 - Brute‑force protection via lockout policy
-- Segregation of admin vs user accounts
-- Restricted access based on group membership
+- All removeable storage devices disabled 
 
 📊 𝟰. 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 & 𝗔𝘂𝗱𝗶𝘁𝗶𝗻𝗴
 Identity events forwarded to Log Analytics Workspace and integrated with Microsoft Sentinel.
