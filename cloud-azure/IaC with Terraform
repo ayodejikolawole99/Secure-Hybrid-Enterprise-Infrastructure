@@ -1,51 +1,84 @@
-#   🚀 Building Secure Enterprise Network Architecture on Azure with Terraform
+Using Terraform on Microsoft Azure, I deployed:
 
-Over the past week, I designed and deployed a segmented enterprise infrastructure for Aurum Manufacturing Group using Terraform and Microsoft Azure. This project was more than just provisioning resources, it was about applying real-world security architecture principles in the cloud.
+A fully segmented Virtual Network (𝟭𝟬.𝟬.𝟬.𝟬/𝟭𝟲) with dedicated subnets:
 
-#   🔑 Key Achievements
+- Users (10.0.10.0/24)
 
--   Hub-and-Spoke Virtual Network Design: Centralized control with clear segmentation for users, admins, guests, and DMZ workloads.
+- Admin (10.0.20.0/24)
 
-#   Network Segmentation & Zero Trust:
+- Guest (10.0.50.0/24)
 
-- DMZ for public-facing services (Linux web server running Flask).
+- DMZ (10.0.60.0/24)
 
-    - Internal subnet hosting Active Directory Domain Services (Windows Server).
-
-    - Guest subnet isolated from core infrastructure.
-
-- Secure Remote Access: Implemented Azure Bastion to eliminate direct public RDP/SSH exposure.
-
-- Traffic Control & Inspection:
-
-    - Azure Firewall with custom rule collections.
-
-    - Route tables directing all outbound traffic through the firewall.
-
-- Centralized Monitoring: Integrated Log Analytics Workspace for diagnostics, firewall logs, and visibility into network activity.
-
-- Infrastructure as Code: Entire environment provisioned and managed via Terraform, ensuring repeatability and automation.
+- Firewall + Bastion subnets
 
 
-#   🛡️ Security Focus
+𝗔 𝗰𝗲𝗻𝘁𝗿𝗮𝗹𝗶𝘇𝗲𝗱 𝗔𝘇𝘂𝗿𝗲 𝗙𝗶𝗿𝗲𝘄𝗮𝗹𝗹 𝗲𝗻𝗳𝗼𝗿𝗰𝗶𝗻𝗴:
 
-- Adopted a Zero Trust model — every subnet and workload is isolated and explicitly allowed only what it needs.
+- Controlled outbound internet access
 
-- Applied least privilege principles to network flows.
+- Strict isolation of guest traffic from internal resources
 
-- Built a secure DMZ that inspects and controls traffic before it reaches internal systems.
+- DNAT rules exposing only the DMZ web service
 
-#   🌍 Why This Matters
+- Route tables forcing all traffic through the firewall (no direct internet breakout)
 
-This project simulates a real-world enterprise environment where cloud networking, security, and automation converge. It demonstrates how organizations can:
 
-    - Modernize infrastructure with Terraform automation.
+🌐 𝗪𝗼𝗿𝗸𝗹𝗼𝗮𝗱𝘀 𝗱𝗲𝗽𝗹𝗼𝘆𝗲𝗱
 
-    - Strengthen defenses with Azure-native security controls.
+𝘋𝘰𝘮𝘢𝘪𝘯 𝘊𝘰𝘯𝘵𝘳𝘰𝘭𝘭𝘦𝘳 (𝘞𝘪𝘯𝘥𝘰𝘸𝘴 𝘚𝘦𝘳𝘷𝘦𝘳)
 
-    - Achieve visibility and compliance through centralized logging.
+→ Backbone for identity and authentication
 
-#   Outcome
+𝘋𝘔𝘡 𝘞𝘦𝘣 𝘚𝘦𝘳𝘷𝘦𝘳 (𝘓𝘪𝘯𝘶𝘹 + 𝘍𝘭𝘢𝘴𝘬 𝘢𝘱𝘱)
 
-A resilient, secure, and automated enterprise network — a blueprint for organizations looking to embrace cloud infrastructure while maintaining strong security posture.
+→ Public-facing application behind firewall NAT
+
+𝘎𝘶𝘦𝘴𝘵 𝘞𝘪𝘯𝘥𝘰𝘸𝘴 𝘝𝘔
+
+→ Simulates untrusted user environment
+
+𝘈𝘻𝘶𝘳𝘦 𝘉𝘢𝘴𝘵𝘪𝘰𝘯
+
+→ Eliminated direct RDP/SSH exposure
+
+
+🔐 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗱𝗲𝘀𝗶𝗴𝗻 𝗱𝗲𝗰𝗶𝘀𝗶𝗼𝗻𝘀
+
+Instead of flat networking, the environment enforces:
+
+- Network segmentation aligned with security zones
+
+- Default route → firewall (forced inspection)
+
+- Guest network completely isolated from internal subnets
+
+- Public access only through controlled NAT rules
+
+
+This mirrors real-world enterprise patterns:
+
+𝘋𝘔𝘡 𝘦𝘹𝘱𝘰𝘴𝘶𝘳𝘦 𝘸𝘪𝘵𝘩𝘰𝘶𝘵 𝘪𝘯𝘵𝘦𝘳𝘯𝘢𝘭 𝘤𝘰𝘮𝘱𝘳𝘰𝘮𝘪𝘴𝘦 𝘳𝘪𝘴𝘬
+
+
+📊 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 & 𝗩𝗶𝘀𝗶𝗯𝗶𝗹𝗶𝘁𝘆
+
+Integrated Azure Monitor with a Log Analytics Workspace:
+
+- Firewall logs (network, application, DNS)
+
+- Centralized telemetry collection
+
+- Foundation for SIEM integration
+
+
+🧠 𝗪𝗵𝘆 𝘁𝗵𝗶𝘀 𝗽𝗿𝗼𝗷𝗲𝗰𝘁
+
+The focus was to move beyond “deploying resources” and instead design:
+
+- A secure-by-default architecture
+
+- Infrastructure that reflects real enterprise constraints
+
+- A foundation for identity, monitoring, and threat detection
 
