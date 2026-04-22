@@ -1,0 +1,84 @@
+Within the 𝘈𝘶𝘳𝘶𝘮 𝘔𝘢𝘯𝘶𝘧𝘢𝘤𝘵𝘶𝘳𝘪𝘯𝘨 𝘎𝘳𝘰𝘶𝘱 (𝘈𝘔𝘎) environment, identity management is implemented using 𝗔𝗰𝘁𝗶𝘃𝗲 𝗗𝗶𝗿𝗲𝗰𝘁𝗼𝗿𝘆, with structured provisioning and enforced password policies to align with enterprise security standards.
+
+This covers:
+- User account creation (manual + automated)
+- Password and lockout policy enforcement
+
+🧱 𝟭. 𝗨𝘀𝗲𝗿 𝗔𝗰𝗰𝗼𝘂𝗻𝘁 𝗣𝗿𝗼𝘃𝗶𝘀𝗶𝗼𝗻𝗶𝗻𝗴
+OU Structure Implemented:
+
+𝘈𝘋 𝘈𝘥𝘮𝘪𝘯 𝘈𝘤𝘤𝘰𝘶𝘯𝘵𝘴 𝘖𝘜
+    - Groups
+    - Service Accounts
+    - Users (with a Retired Users sub‑OU)
+
+𝘋𝘢𝘵𝘢 𝘖𝘜
+    - Servers
+    - Sites → 15 global locations (North America, South America, Europe, Africa, Asia, Australia, Middle East, East Asia, South Asia,Central America, Northern Europe, Southern Europe, Eastern Europe, Western Europe, Pacific Islands)
+        - 𝘌𝘢𝘤𝘩 𝘴𝘪𝘵𝘦 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘴𝘶𝘣‐𝘖𝘜𝘴 𝘧𝘰𝘳 𝘊𝘰𝘮𝘱𝘶𝘵𝘦𝘳𝘴, 𝘜𝘴𝘦𝘳𝘴, 𝘚𝘦𝘳𝘷𝘦𝘳𝘴, 𝘚𝘦𝘳𝘷𝘪𝘤𝘦 𝘈𝘤𝘤𝘰𝘶𝘯𝘵𝘴
+
+- Decommissioned Servers OU
+- Domain Controllers OU
+
+𝗠𝗮𝗻𝘂𝗮𝗹 𝗖𝗿𝗲𝗮𝘁𝗶𝗼𝗻 (𝗚𝗨𝗜):
+- Navigate to the appropriate OU (e.g., OU=Users,OU=Asia,OU=Sites,OU=Data,DC=amg,DC=local)
+- Right‑click → New → User → Enter details → Set password → Enable account
+
+𝗕𝘂𝗹𝗸 𝗨𝘀𝗲𝗿 𝗖𝗿𝗲𝗮𝘁𝗶𝗼𝗻 (𝗠𝗮𝗶𝗻 𝗦𝗰𝗿𝗶𝗽𝘁 𝗣𝗮𝗿𝘁𝘀):  
+I automated provisioning of 10 users per site across all 15 global locations. The script looped through each site OU and created users with consistent naming conventions and UPN suffixes.
+
+𝗞𝗲𝘆 𝗹𝗼𝗴𝗶𝗰:
+
+$𝘭𝘰𝘤𝘢𝘵𝘪𝘰𝘯𝘴 = @("𝘕𝘰𝘳𝘵𝘩 𝘈𝘮𝘦𝘳𝘪𝘤𝘢", "𝘚𝘰𝘶𝘵𝘩 𝘈𝘮𝘦𝘳𝘪𝘤𝘢", "𝘌𝘶𝘳𝘰𝘱𝘦", "𝘈𝘧𝘳𝘪𝘤𝘢", "𝘈𝘴𝘪𝘢",
+    "𝘈𝘶𝘴𝘵𝘳𝘢𝘭𝘪𝘢", "𝘔𝘪𝘥𝘥𝘭𝘦 𝘌𝘢𝘴𝘵", "𝘌𝘢𝘴𝘵 𝘈𝘴𝘪𝘢", "𝘚𝘰𝘶𝘵𝘩 𝘈𝘴𝘪𝘢", "𝘊𝘦𝘯𝘵𝘳𝘢𝘭 𝘈𝘮𝘦𝘳𝘪𝘤𝘢",
+    "𝘕𝘰𝘳𝘵𝘩𝘦𝘳𝘯 𝘌𝘶𝘳𝘰𝘱𝘦", "𝘚𝘰𝘶𝘵𝘩𝘦𝘳𝘯 𝘌𝘶𝘳𝘰𝘱𝘦", "𝘌𝘢𝘴𝘵𝘦𝘳𝘯 𝘌𝘶𝘳𝘰𝘱𝘦", "𝘞𝘦𝘴𝘵𝘦𝘳𝘯 𝘌𝘶𝘳𝘰𝘱𝘦", "𝘗𝘢𝘤𝘪𝘧𝘪𝘤 𝘐𝘴𝘭𝘢𝘯𝘥𝘴")
+
+𝘧𝘰𝘳𝘦𝘢𝘤𝘩 ($𝘭𝘰𝘤 𝘪𝘯 $𝘭𝘰𝘤𝘢𝘵𝘪𝘰𝘯𝘴) {
+    $𝘶𝘴𝘦𝘳𝘴𝘖𝘜 = "𝘖𝘜=𝘜𝘴𝘦𝘳𝘴,𝘖𝘜=$𝘭𝘰𝘤,𝘖𝘜=𝘚𝘪𝘵𝘦𝘴,𝘖𝘜=𝘋𝘢𝘵𝘢,𝘋𝘊=𝘢𝘮𝘨,𝘋𝘊=𝘭𝘰𝘤𝘢𝘭"
+    𝘧𝘰𝘳 ($𝘪 = 1; $𝘪 -𝘭𝘦 20; $𝘪++) {
+        $𝘴𝘢𝘮 = ($𝘭𝘰𝘤.𝘚𝘶𝘣𝘴𝘵𝘳𝘪𝘯𝘨(0,3).𝘛𝘰𝘓𝘰𝘸𝘦𝘳() + "𝘶" + "{0:𝘋2}" -𝘧 $𝘪)
+        $𝘶𝘱𝘯 = "$𝘴𝘢𝘮@𝘢𝘮𝘨.𝘭𝘰𝘤𝘢𝘭"
+        𝘕𝘦𝘸-𝘈𝘋𝘜𝘴𝘦𝘳 -𝘕𝘢𝘮𝘦 "𝘜𝘴𝘦𝘳 $𝘪 $𝘭𝘰𝘤" -𝘚𝘢𝘮𝘈𝘤𝘤𝘰𝘶𝘯𝘵𝘕𝘢𝘮𝘦 $𝘴𝘢𝘮 -𝘜𝘴𝘦𝘳𝘗𝘳𝘪𝘯𝘤𝘪𝘱𝘢𝘭𝘕𝘢𝘮𝘦 $𝘶𝘱𝘯 `
+                   -𝘗𝘢𝘵𝘩 $𝘶𝘴𝘦𝘳𝘴𝘖𝘜 -𝘈𝘤𝘤𝘰𝘶𝘯𝘵𝘗𝘢𝘴𝘴𝘸𝘰𝘳𝘥 (𝘊𝘰𝘯𝘷𝘦𝘳𝘵𝘛𝘰-𝘚𝘦𝘤𝘶𝘳𝘦𝘚𝘵𝘳𝘪𝘯𝘨 "𝘛𝘦𝘮𝘱𝘗@𝘴𝘴𝘸0𝘳𝘥!" -𝘈𝘴𝘗𝘭𝘢𝘪𝘯𝘛𝘦𝘹𝘵 -𝘍𝘰𝘳𝘤𝘦) `
+                   -𝘌𝘯𝘢𝘣𝘭𝘦𝘥 $𝘵𝘳𝘶𝘦 -𝘊𝘩𝘢𝘯𝘨𝘦𝘗𝘢𝘴𝘴𝘸𝘰𝘳𝘥𝘈𝘵𝘓𝘰𝘨𝘰𝘯 $𝘵𝘳𝘶𝘦
+    }
+}
+
+🔒 𝟮. 𝗣𝗮𝘀𝘀𝘄𝗼𝗿𝗱 & 𝗟𝗼𝗰𝗸𝗼𝘂𝘁 𝗣𝗼𝗹𝗶𝗰𝗶𝗲𝘀
+
+𝘊𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘦𝘥 𝘷𝘪𝘢 𝘎𝘳𝘰𝘶𝘱 𝘗𝘰𝘭𝘪𝘤𝘺 𝘢𝘵 𝘵𝘩𝘦 𝘥𝘰𝘮𝘢𝘪𝘯 𝘭𝘦𝘷𝘦𝘭:
+- Minimum length: 8–12 characters
+- Complexity: enabled
+- Maximum age: 90 days
+- History: 5–10 remembered
+
+𝘈𝘤𝘤𝘰𝘶𝘯𝘵 𝘓𝘰𝘤𝘬𝘰𝘶𝘵 𝘗𝘰𝘭𝘪𝘤𝘺:
+
+- Threshold: 5 failed attempts
+- Duration: 15 minutes
+- Reset counter: 15 minutes
+
+🛡️𝟯. 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗖𝗼𝗻𝘁𝗿𝗼𝗹𝘀
+
+- Strong password requirements enforced
+- Brute‑force protection via lockout policy
+- Segregation of admin vs user accounts
+- Restricted access based on group membership
+
+📊 𝟰. 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 & 𝗔𝘂𝗱𝗶𝘁𝗶𝗻𝗴
+Identity events forwarded to Log Analytics Workspace and integrated with Microsoft Sentinel.
+
+𝘒𝘦𝘺 𝘦𝘷𝘦𝘯𝘵𝘴 𝘵𝘳𝘢𝘤𝘬𝘦𝘥:
+
+- Failed logins (4625)
+- Successful logins (4624)
+- Account lockouts (4740)
+- User creation (4720)
+
+🧠 𝟱. 𝗥𝗲𝗮𝗹‐𝗪𝗼𝗿𝗹𝗱 𝗔𝗹𝗶𝗴𝗻𝗺𝗲𝗻𝘁
+This implementation reflects enterprise IAM practices:
+
+- Centralized identity management
+- Role‑based access control
+- Enforced authentication policies
+- Integrated monitoring and detection
