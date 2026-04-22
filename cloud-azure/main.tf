@@ -203,7 +203,7 @@ resource "azurerm_windows_virtual_machine" "dc" {
   location = azurerm_resource_group.rg.location
   size = "Standard_D2als_v6"
   admin_username = "azureadadmin"
-  admin_password = "C0mplexPassw0rd123!"
+  admin_password = "Input-password..."
 
   network_interface_ids = [
     azurerm_network_interface.dc_nic.id
@@ -230,7 +230,7 @@ resource "azurerm_windows_virtual_machine" "guest" {
   size = "Standard_D2als_v6"
 
   admin_username = "windowsguest"
-  admin_password = "Password123!"
+  admin_password = "Input-password..."
 
   network_interface_ids = [
     azurerm_network_interface.guest_nic_win.id
@@ -261,7 +261,7 @@ resource "azurerm_linux_virtual_machine" "dmz_vm" {
     azurerm_network_interface.dmz_nic.id
   ]
   
-  admin_password = "C0mplex1861!"
+  admin_password = "Input-password..."
 
   disable_password_authentication = false
 
